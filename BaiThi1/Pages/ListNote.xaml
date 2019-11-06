@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="BaiThi1.Pages.ListNote"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BaiThi1.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:entity="using:BaiThi1.Entity"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="ListViewNote" Grid.Column="0" Grid.Row="0">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="entity:Note">
+                    <StackPanel Orientation="Horizontal" x:Name="stackOfNote" Tag="{Binding Id}" DoubleTapped="StackOfNote_DoubleTapped">
+                        <TextBlock FontSize="20" x:Name="Title" FontWeight="Bold" Text="{Binding Title}"></TextBlock>
+                        <!--<TextBlock x:Name="hidID" Visibility="Collapsed" Tag="{Binding Id}" ></TextBlock>-->
+                        <NavigationViewItemSeparator Foreground="AliceBlue"></NavigationViewItemSeparator>
+                        <TextBlock FontSize="20" x:Name="Content" FontWeight="Bold" Text="{Binding Content}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <AppBarSeparator Foreground="Black"></AppBarSeparator>
+        <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" HorizontalAlignment="Center">Add Contact</TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="0" >Name</TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="1" x:Name="Title"/>
+                <TextBlock Grid.Row="2" Grid.Column="0">PhoneNumber</TextBlock>
+                <TextBox Grid.Row="2" Grid.Column="1" x:Name="Content"/>
+                <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                    <Button x:Name="btnSubmit" Click="BtnSubmit_Click">Add Contact</Button>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>
